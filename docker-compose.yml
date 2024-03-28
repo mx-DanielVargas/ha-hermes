@@ -1,0 +1,13 @@
+# node server
+version: '3'
+services:
+  node:
+    image: node:latest
+    container_name: node
+    working_dir: /app
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "7890:7890"
+    command: npm start
