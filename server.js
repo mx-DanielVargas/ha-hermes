@@ -1,5 +1,6 @@
 const WebSocket = require("ws");
 const http = require("http");
+const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   res.writeHead(404);
@@ -9,7 +10,7 @@ const server = http.createServer((req, res) => {
 const wss = new WebSocket.Server({ noServer: true });
 
 wss.on("connection", function connection(ws) {
-  ws.on("message", function incoming(message) {
+  ws.on("message", async function incoming(message) {
     const msg = JSON.parse(message);
 
     if (msg.processName === "GetParametersConfigurationLogin") {
@@ -26,8 +27,30 @@ wss.on("connection", function connection(ws) {
     }
 
     if (msg.processName === "GetVersion") {
+      const token = msg.tokenAppId;
+
+      const versionResponse = await fetch(
+        "https://hermes-api-dev.mylabs.mx/api/settings/hardware_agent_version",
+        {
+          headers: {
+            authorizer: token,
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            Referer: "https://hermes-dev.mylabs.mx/",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+          },
+          body: null,
+          method: "GET",
+        }
+      );
+      const versionJson = await versionResponse.json();
+      const version = versionJson.data.version;
+
       const jsonFile = require("./data.json");
-      const version = jsonFile.version;
+      jsonFile.version = version;
+      fs.writeFileSync("./data.json", JSON.stringify(jsonFile));
+
 
       const response = {
         status: 2000,
