@@ -1,0 +1,35 @@
+{
+    "machineDescription": {
+        "computerSystem": {
+            "description": "AT/AT COMPATIBLE",
+            "manuFacturer": "HP",
+            "model": "HP EliteBook 840 G6",
+            "name": "DESKTOP-RPT8U0G",
+            "totalPhysicalMemory": 25566674944
+        },
+        "environment": {
+            "machineName": "DESKTOP-RPT8U0G",
+            "osVersion": "Microsoft Windows NT 10.0.22631.0",
+            "userDomainName": "DESKTOP-RPT8U0G",
+            "userName": "hp",
+            "frameworkVersion": "",
+            "osVersionName": "Windows 10 Home Single Language---Microsoft Windows NT 10.0.22631.0"
+        },
+        "diskDrive": {
+            "description": "Unidad de disco",
+            "size": 512105932800,
+            "model": "SAMSUNG MZVL2512HCJQ-00B07",
+            "name": "\\\\.\\PHYSICALDRIVE0",
+            "serialNumber": "0025_38B3_11B5_E2FB."
+        },
+        "bios": {
+            "caption": "R70 Ver. 01.24.00",
+            "manuFacturer": "HP",
+            "serialNumber": "5CG9361FWV"
+        }
+    },
+    "hardwareId": "0025_38B3_11B5_E2FB.5CG9361FWV",
+    "culture": "en-US",
+    "version": "1.0.42",
+    "os": "Windows 10 Home Single Language---Microsoft Windows NT 10.0.22631.0"
+}
