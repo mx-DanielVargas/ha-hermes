@@ -70,6 +70,9 @@ wss.on("connection", function connection(ws, req) {
 
       const jsonFile = require("./data.json");
       jsonFile.version = version;
+      jsonFile.machineDescription.deployedAppVersion = `H2.${version}v`;
+      jsonFile.machineDescription.getConfigAppVersion = `H2.${version}`;
+
       if (environments[urlReferer][2]) {
         jsonFile.hardwareId = environments[urlReferer][2];
       }
